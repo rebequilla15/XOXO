@@ -1,0 +1,667 @@
+
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>XOXO.ᐟ | CANCIONES</title>
+    <link rel="icon" type="image/png" href="image/logopagina.png">
+
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background-color: #f8cce1;
+            color: #78204c;
+            overflow-x: hidden;
+        }
+
+        /* CABECERA */
+        header {
+            display: flex;
+            flex-direction: row;
+            justify-content: flex-start;
+            align-items: center;
+            background-color: #ff4a98;
+            padding: 12px;
+            border-top: 8px solid #e90065;
+            border-bottom: 5px solid #d90065;
+            gap: 20px;
+        }
+
+        .titulo {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .titulo h1 {
+            color: white;
+            font-size: 30px;
+            margin: 0;
+            text-shadow: 2px 2px #c90060;
+        }
+
+        .logo-cabecera {
+            width: 125px;
+            height: 75px;
+            object-fit: contain;
+        }
+
+        header>div {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 25px;
+            width: 100%;
+        }
+
+        /* MENU */
+        .barra-navegacion {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            margin-top: 0;
+            flex-wrap: wrap;
+        }
+
+        .boton-nav {
+            text-decoration: none;
+            color: white;
+            background-color: #e90065;
+            padding: 8px 12px;
+            font-size: 13px;
+            border: 1px solid #ffb5d5;
+            border-radius: 5px;
+        }
+
+        .boton-nav:hover,
+        .boton-nav.activo {
+            background-color: white;
+            color: #e90065;
+        }
+
+        /* TITULO PRINCIPAL */
+        main {
+            padding: 18px;
+        }
+
+        .portada-titulo {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 20px;
+            background-color: #ff1682;
+            border: 4px solid #e90065;
+            border-radius: 28px 70px 28px 70px;
+            padding: 20px 25px;
+            margin-bottom: 20px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .portada-titulo h2 {
+            color: white;
+            font-size: 35px;
+            margin: 0;
+            text-shadow: 3px 3px #c90060;
+        }
+
+        .portada-titulo p {
+            color: white;
+            font-size: 14px;
+            line-height: 1.5;
+            max-width: 470px;
+        }
+
+        .sello {
+            background-color: #f8cce1;
+            color: #e90065;
+            border: 3px solid #ffb5d5;
+            border-radius: 50%;
+            width: 125px;
+            height: 125px;
+            flex-shrink: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            font-weight: bold;
+            font-size: 15px;
+            transform: rotate(10deg);
+        }
+
+        /* BARRA DE GENEROS */
+        .generos {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            gap: 10px;
+            margin: 0 0 20px;
+        }
+
+        .generos span {
+            color: #e90065;
+            font-size: 13px;
+            font-weight: bold;
+            margin-right: 5px;
+        }
+
+        .generos a {
+            color: white;
+            text-decoration: none;
+            background-color: #e90065;
+            border: 2px solid #ff8fc0;
+            border-radius: 4px;
+            padding: 10px 16px;
+            font-size: 13px;
+            transform: rotate(-2deg);
+        }
+
+        .generos a:nth-child(even) {
+            transform: rotate(2deg);
+            background-color: #ff4a98;
+        }
+
+        .generos a:hover {
+            background-color: #78204c;
+        }
+
+        /* DISTRIBUCION */
+        .distribucion {
+            display: grid;
+            grid-template-columns: minmax(0, 1.5fr) minmax(250px, 0.8fr);
+            gap: 20px;
+            align-items: stretch;
+        }
+
+        .lista-principal {
+            min-width: 0;
+            background-color: #e90082;
+            padding: 20px;
+            border-radius: 38px 12px 38px 12px;
+            border: 3px solid #d90065;
+            display: grid;
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            gap: 14px;
+        }
+
+        .titulo-lista {
+            grid-column: 1 / -1;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 10px;
+            margin-bottom: 0;
+        }
+
+        .titulo-lista h2 {
+            color: white;
+            font-size: 22px;
+            margin: 0;
+        }
+
+        .titulo-lista span {
+            color: #ffa6d2;
+            font-size: 25px;
+        }
+
+        /* CANCIONES EN DOS COLUMNAS */
+        .cancion-grande {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            background-color: #fff0f7;
+            border: 3px solid #ffb1d3;
+            border-radius: 15px 35px 15px 35px;
+            padding: 10px;
+            margin-bottom: 0;
+            min-height: 125px;
+            position: relative;
+            min-width: 0;
+        }
+
+        .cancion-grande:nth-of-type(even) {
+            border-radius: 35px 15px 35px 15px;
+            background-color: #ffe0ef;
+        }
+
+        .portada-cancion {
+            width: 85px;
+            height: 85px;
+            object-fit: cover;
+            flex-shrink: 0;
+            border-radius: 12px;
+            background-color: #ffa6d2;
+        }
+
+        .info-cancion {
+            flex: 1;
+            min-width: 0;
+        }
+
+        .info-cancion h3 {
+            color: #e90065;
+            font-size: 17px;
+            margin: 0 0 7px;
+            overflow-wrap: anywhere;
+        }
+
+        .info-cancion p {
+            color: #78204c;
+            font-size: 12px;
+            margin: 5px 0;
+            line-height: 1.35;
+        }
+
+        /* REPRODUCTORES */
+        .audio-cancion {
+            display: block;
+            width: 100%;
+            max-width: 260px;
+            height: 35px;
+            margin-top: 8px;
+        }
+
+        .numero-cancion {
+            position: absolute;
+            right: 15px;
+            top: 10px;
+            color: #e90065;
+            font-size: 13px;
+            font-weight: bold;
+        }
+
+        /* COLUMNA DECORATIVA */
+        .lateral {
+            display: flex;
+            flex-direction: column;
+            gap: 18px;
+            min-width: 0;
+        }
+
+        .imagen-esquina {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            border-radius: 30px 1px 30px 1px;
+            background-color: #ffa6d2;
+            margin-bottom: -8px;
+            margin-top: -8px;
+        }
+
+        .reproductor {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            background-color: #ff4a98;
+            border: 4px solid #e90065;
+            border-radius: 12px 40px 12px 40px;
+            padding: 12px;
+            color: white;
+            min-width: 0;
+        }
+
+        .reproductor-portada {
+            width: 125px;
+            height: 125px;
+            object-fit: cover;
+            flex-shrink: 0;
+            border: 4px solid #ffb5d5;
+            background-color: #ffa6d2;
+        }
+
+        .reproductor-info {
+            flex: 1;
+            min-width: 0;
+        }
+
+        .reproductor h2 {
+            font-size: 20px;
+            margin: 0 0 12px;
+        }
+
+        .reproductor-info img {
+            width: 100%;
+            height: 210px;
+            object-fit: cover;
+            border: 4px solid #ffb5d5;
+            border-radius: 12px;
+            background-color: #ffa6d2;
+        }
+
+        .reproductor h3 {
+            font-size: 19px;
+            margin: 0 0 6px;
+        }
+
+        .reproductor p {
+            font-size: 13px;
+            margin: 4px 0 10px;
+        }
+
+        .reproductor audio {
+            width: 100%;
+            display: block;
+        }
+
+        .frase {
+            background-color: #ffe6f1;
+            border-left: 7px solid #e90065;
+            padding: 15px;
+            color: #78204c;
+            font-size: 14px;
+            line-height: 1.6;
+            border-radius: 4px 18px 4px 18px;
+        }
+
+        .frase strong {
+            color: #e90065;
+        }
+
+        /* PIE */
+        footer {
+            text-align: center;
+            background-color: #e90065;
+            color: white;
+            padding: 12px;
+            margin-top: 5px;
+            border-top: 6px solid #ff74b1;
+        }
+
+        footer p {
+            margin: 5px;
+            font-size: 13px;
+        }
+
+        footer a {
+            color: white;
+            text-decoration: none;
+        }
+
+        /* ADAPTACION */
+        @media (max-width: 1100px) {
+            .distribucion {
+                grid-template-columns: minmax(0, 1fr);
+            }
+
+            .lateral {
+                display: grid;
+                grid-template-columns: repeat(2, minmax(0, 1fr));
+            }
+
+            .reproductor {
+                grid-column: 1 / -1;
+            }
+        }
+
+        @media (max-width: 850px) {
+            header {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+
+            header>div {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 10px;
+            }
+
+            .titulo h1 {
+                font-size: 24px;
+            }
+        }
+
+        @media (max-width: 650px) {
+            .lista-principal {
+                grid-template-columns: 1fr;
+            }
+
+            .titulo-lista {
+                grid-column: 1;
+            }
+
+            .lateral {
+                display: flex;
+            }
+
+            .reproductor {
+                align-items: flex-start;
+                flex-direction: column;
+            }
+
+            .reproductor-portada {
+                width: 100%;
+                height: 210px;
+            }
+
+            .portada-titulo h2 {
+                font-size: 25px;
+            }
+
+            .sello {
+                width: 85px;
+                height: 85px;
+                font-size: 11px;
+            }
+
+            .cancion-grande {
+                align-items: center;
+                flex-direction: row;
+            }
+
+            .audio-cancion {
+                max-width: 100%;
+            }
+        }
+
+        @media (max-width: 420px) {
+            .cancion-grande {
+                align-items: flex-start;
+                flex-direction: column;
+            }
+
+            .portada-cancion {
+                width: 100%;
+                height: 180px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <header>
+        <div>
+            <div class="titulo">
+                <h1>ﾒ૦ﾒ૦ 💋.ᐟ</h1>
+                <img src="image/2000.png" alt="Logo de XOXO" class="logo-cabecera">
+            </div>
+
+            <nav class="barra-navegacion">
+                <a href="index.html" class="boton-nav">HOME!!</a>
+                <a href="pagina1.html" class="boton-nav">LETRAS</a>
+                <a href="pagina2.html" class="boton-nav">PARA TI.ᐟ</a>
+                <a href="pagina3.html" class="boton-nav activo">CANCIONES ♫</a>
+                <a href="pagina4.html" class="boton-nav">ARTISTAS 📽</a>
+                <a href="pagina5.html" class="boton-nav">PLAYLIST</a>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+
+        <section class="portada-titulo">
+            <div>
+                <h2>MI VIDA, PERO CON SOUNDTRACK ↻ ◁ || ▷ ↺</h2>
+                <p>De esos hits que te sabes completos, canciones que te ponen de buenas y otras que simplemente no
+                    puedes dejar de escuchar. Todo aquí ᯓ𝄞 ˎˊ˗</p>
+            </div>
+        </section>
+
+        <div class="distribucion">
+
+            <section class="lista-principal">
+
+                <div class="titulo-lista">
+                    <h2>CANCIONES PARA TUS PLAYLIST</h2>
+                    <span>▶︎•|၊|။|||။၊|။||။||။</span>
+                </div>
+
+                <article class="cancion-grande" id="pop">
+                    <img src="image/kali.png" alt="Portada de Igual que un ángel" class="portada-cancion">
+                    <div class="info-cancion">
+                        <h3>IGUAL QUE UN ANGEL</h3>
+                        <p>Kali Uchis ft. Peso Pluma</p>
+                        <audio class="audio-cancion" controls preload="none">
+                            <source src="music/kali.mp3" type="audio/mpeg">
+                            Tu navegador no puede reproducir este audio.
+                        </audio>
+                    </div>
+                </article>
+
+                <article class="cancion-grande" id="kpop">
+                    <img src="image/amora.jpg" alt="Portada de Amor a primera vista" class="portada-cancion">
+                    <div class="info-cancion">
+                        <h3>AMOR A PRIMERA VISTA</h3>
+                        <p>Los Angeles Azules ft. Horacio Palencia</p>
+                        <audio class="audio-cancion" controls preload="none">
+                            <source src="music/angelesa.mp3" type="audio/mpeg">
+                            Tu navegador no puede reproducir este audio.
+                        </audio>
+                    </div>
+                </article>
+
+                <article class="cancion-grande" id="electronica">
+                    <img src="image/artic.png" alt="Portada de Arctic Monkeys" class="portada-cancion">
+                    <div class="info-cancion">
+                        <h3>WHY'D YOU ONLY CALL ME WHEN YOU'RE HIGH?</h3>
+                        <p>Arctic Monkeys</p>
+                        <audio class="audio-cancion" controls preload="none">
+                            <source src="music/b.mp3" type="audio/mpeg">
+                            Tu navegador no puede reproducir este audio.
+                        </audio>
+                    </div>
+                </article>
+
+                <article class="cancion-grande" id="chill">
+                    <img src="image/gori.png" alt="Portada de Feel Good Inc." class="portada-cancion">
+                    <div class="info-cancion">
+                        <h3>FEEL GOOD INC.</h3>
+                        <p>Gorillaz ft. De La Soul</p>
+                        <audio class="audio-cancion" controls preload="none">
+                            <source src="music/c.mp3" type="audio/mpeg">
+                            Tu navegador no puede reproducir este audio.
+                        </audio>
+                    </div>
+                </article>
+
+                <article class="cancion-grande">
+                    <img src="image/niki.png" alt="Portada de Pound the Alarm" class="portada-cancion">
+                    <div class="info-cancion">
+                        <h3>POUND THE ALARM</h3>
+                        <p>Nicki Minaj</p>
+                        <audio class="audio-cancion" controls preload="none">
+                            <source src="music/nik.mpeg" type="audio/mpeg">
+                            Tu navegador no puede reproducir este audio.
+                        </audio>
+                    </div>
+                </article>
+
+                <article class="cancion-grande">
+                    <img src="image/cariñito.png" alt="Portada de Cariñito" class="portada-cancion">
+                    <div class="info-cancion">
+                        <h3>CARIÑITO</h3>
+                        <p>Lila Downs ft. Panteon Rococo</p>
+                        <audio class="audio-cancion" controls preload="none">
+                            <source src="music/a.mp3" type="audio/mpeg">
+                            Tu navegador no puede reproducir este audio.
+                        </audio>
+                    </div>
+                </article>
+
+                <article class="cancion-grande">
+                    <img src="image/avicii.png" alt="Portada de Waiting for Love" class="portada-cancion">
+                    <div class="info-cancion">
+                        <h3>WAITING FOR LOVE</h3>
+                        <p>Avicii</p>
+                        <audio class="audio-cancion" controls preload="none">
+                            <source src="music/avi.mpeg" type="audio/mpeg">
+                            Tu navegador no puede reproducir este audio.
+                        </audio>
+                    </div>
+                </article>
+
+                <article class="cancion-grande">
+                    <img src="image/sk.png" alt="Portada de Social Path" class="portada-cancion">
+                    <div class="info-cancion">
+                        <h3>SOCIAL PATH</h3>
+                        <p>Stray Kids</p>
+                        <audio class="audio-cancion" controls preload="none">
+                            <source src="music/sk.mpeg" type="audio/mpeg">
+                            Tu navegador no puede reproducir este audio.
+                        </audio>
+                    </div>
+                </article>
+
+            </section>
+
+            <aside class="lateral">
+
+                <img src="image/tigre.gif" alt="Imagen musical decorativa" class="imagen-esquina">
+
+                <section class="reproductor">
+                    <img src="image/perdon.jpg" alt="Portada de Perdoname" class="reproductor-portada">
+
+                    <div class="reproductor-info">
+                        <h3>PERDONAME</h3>
+                        <p>Deorro feat. Dycy & Adrian Delgado</p>
+                        <audio controls>
+                            <source src="music/perdon.mp3" type="audio/mpeg">
+                            Tu navegador no puede reproducir este audio.
+                        </audio>
+                    </div>
+                </section>
+
+                <img src="image/gi.gif" alt="Imagen musical decorativa" class="imagen-esquina">
+
+                <div class="frase">
+                    <p>Hay canciones que pueden pasar años sin sonar y de repente, aparecen otra vez y te acuerdas de
+                        toda la letra como si la hubieras escuchado ayer. Esos hits que nunca fallan, que siempre quedan
+                        y que deberían tener un lugar permanente en cualquier playlist. 💿</p>
+                </div>
+
+            </aside>
+
+        </div>
+    </main>
+
+    <footer>
+        <p>QUE LA MUSICA NOS SALVE DEL RUIDO DE NUESTRAS MENTES.</p>
+        <p><a href="index.html">Volver al inicio</a></p>
+    </footer>
+
+    <!-- EVITA QUE SE REPRODUZCAN DOS CANCIONES AL MISMO TIEMPO -->
+    <script>
+        const reproductores = document.querySelectorAll("audio");
+
+        reproductores.forEach(function(audio) {
+            audio.addEventListener("play", function() {
+
+                reproductores.forEach(function(otroAudio) {
+                    if (otroAudio !== audio) {
+                        otroAudio.pause();
+                    }
+                });
+
+            });
+        });
+    </script>
+
+</body>
+</html>
