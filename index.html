@@ -1,0 +1,457 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>XOXO.ᐟ | HOME</title>
+        <link rel="icon" type="image/png" href="image/logopagina.png">
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+        body {
+            margin: 0;
+            background: #f8cce1;
+            color: #78204c;
+            font-family: Arial, Helvetica, sans-serif;
+        }
+        header {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #ff4a98;
+    padding: 12px;
+    border-top: 8px solid #e90065;
+    border-bottom: 5px solid #d90065;
+    gap: 20px;
+}
+.logo-cabecera {
+    width: 125px;
+    height: 75px;
+    object-fit: contain;
+}
+        .titulo {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+.titulo h1 {
+    color: white;
+    font-size: 30px;
+    margin: 0;
+    text-shadow: 2px 2px #c90060;
+}
+       .barra-navegacion {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-top: 0;
+    flex-wrap: wrap;
+}
+.boton-nav {
+    text-decoration: none;
+    color: white;
+    background-color: #e90065;
+    padding: 8px 12px;
+    font-size: 13px;
+    border: 1px solid #ffb5d5;
+    border-radius: 5px;
+}
+.boton-nav:hover, .boton-nav.activo {
+    background-color: white;
+    color: #e90065;
+}
+        main {
+            max-width: 1500px;
+            margin: 0 auto;
+            padding: 22px 18px 28px;
+        }
+        .bienvenida {
+            display: grid;
+            grid-template-columns: 1.08fr .92fr;
+            gap: 18px;
+            align-items: stretch;
+        }
+        .texto-bienvenida {
+            background: #e90065;
+            color: white;
+            border: 4px solid #ffafd1;
+            border-radius: 28px 65px 12px 35px;
+            padding: 34px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            min-height: 340px;
+        }
+        .etiqueta {
+            display: inline-block;
+            width: fit-content;
+            background: #ffe6f1;
+            color: #e90065;
+            padding: 7px 12px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: bold;
+            letter-spacing: 1px;
+            margin-bottom: 17px;
+        }
+        h1 {
+            margin: 0 0 15px;
+            font-size: clamp(35px, 4.4vw, 66px);
+            line-height: .98;
+            text-transform: uppercase;
+            text-shadow: 3px 3px #ff4a98;
+        }
+        .texto-bienvenida p {
+            max-width: 560px;
+            line-height: 1.65;
+            font-size: 16px;
+            margin: 0 0 22px;
+        }
+        .boton {
+            display: inline-block;
+            width: fit-content;
+            background: #fff0f7;
+            color: #e90065;
+            border: 2px solid white;
+            padding: 12px 17px;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 13px;
+        }
+        .foto-principal {
+            min-height: 340px;
+            background: #ffafd1;
+            border: 5px solid #e90065;
+            border-radius: 70px 20px 70px 20px;
+            padding: 12px;
+            position: relative;
+        }
+        .foto-principal img {
+            display: block;
+            width: 100%;
+            height: 100%;
+            min-height: 306px;
+            object-fit: cover;
+            border-radius: 45px 12px 45px 12px;
+        }
+        .sticker {
+            position: absolute;
+            right: 22px;
+            bottom: 22px;
+            background: #fff0f7;
+            color: #e90065;
+            border: 2px solid #e90065;
+            padding: 13px 17px;
+            font-weight: bold;
+            transform: rotate(-5deg);
+            text-align: center;
+        }
+        .titulo-seccion {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 12px;
+            margin: 32px 2px 15px;
+            color: #e90065;
+        }
+        .titulo-seccion h2 {
+            font-size: clamp(21px, 2.5vw, 29px);
+            margin: 0;
+            text-transform: uppercase;
+        }
+        .titulo-seccion span {
+            font-weight: bold;
+            font-size: 22px;
+        }
+        .accesos {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 15px;
+        }
+        .tarjeta {
+            display: grid;
+            grid-template-columns: 112px 1fr;
+            gap: 14px;
+            align-items: center;
+            background: #ffe6f1;
+            border: 3px solid #ffafd1;
+            padding: 13px;
+            min-height: 150px;
+            text-decoration: none;
+            color: #78204c;
+            transition: transform .2s, border-color .2s;
+        }
+        .tarjeta:nth-child(2) {
+            border-radius: 18px 18px 42px 18px;
+        }
+        .tarjeta:nth-child(3) {
+            border-radius: 18px 42px 18px 18px;
+        }
+        .tarjeta:hover {
+            transform: translateY(-4px);
+            border-color: #e90065;
+        }
+        .tarjeta img {
+            width: 112px;
+            height: 112px;
+            object-fit: cover;
+            border: 3px solid #e90065;
+            background: #ffafd1;
+        }
+        .numero {
+            font-size: 11px;
+            color: #e90065;
+            letter-spacing: 1px;
+            font-weight: bold;
+        }
+        .tarjeta h3 {
+            color: #e90065;
+            margin: 7px 0;
+            font-size: 19px;
+            text-transform: uppercase;
+        }
+        .tarjeta p {
+            margin: 0 0 12px;
+            line-height: 1.4;
+            font-size: 13px;
+        }
+        .mini-boton {
+            display: inline-block;
+            background: #e90065;
+            color: white;
+            padding: 8px 11px;
+            font-size: 12px;
+            font-weight: bold;
+        }
+        .mood {
+            margin-top: 28px;
+            display: grid;
+            grid-template-columns: .85fr 1.15fr;
+            gap: 17px;
+        }
+        .mood-info {
+            background: #ff4a98;
+            color: white;
+            padding: 24px;
+            border-top: 6px solid #e90065;
+            border-bottom: 6px solid #e90065;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+        .mood-info h2 {
+            margin: 0 0 10px;
+            font-size: 25px;
+            text-transform: uppercase;
+        }
+        .mood-info p {
+            line-height: 1.5;
+            margin: 0;
+        }
+        .mood-opciones {
+            background: #fff0f7;
+            border: 3px solid #e90065;
+            border-radius: 25px 8px 25px 8px;
+            padding: 22px;
+        }
+        .mood-opciones h3 {
+            margin: 0 0 14px;
+            color: #e90065;
+        }
+        .botones-mood {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 9px;
+        }
+        .botones-mood a {
+            background: #ffafd1;
+            color: #78204c;
+            text-decoration: none;
+            font-size: 13px;
+            font-weight: bold;
+            padding: 11px 13px;
+            border-radius: 6px;
+        }
+        .botones-mood a:hover {
+            background: #e90065;
+            color: white;
+        }
+        .franja {
+            margin-top: 28px;
+            padding: 20px 23px;
+            background: #e90065;
+            color: white;
+            border-top: 6px solid #ff4a98;
+            border-bottom: 6px solid #ff4a98;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 18px;
+        }
+        .franja h2 {
+            margin: 0 0 5px;
+            font-size: 23px;
+        }
+        .franja p {
+            margin: 0;
+            line-height: 1.4;
+        }
+        .franja a {
+            background: #fff0f7;
+            color: #e90065;
+            padding: 12px 15px;
+            text-decoration: none;
+            font-weight: bold;
+            white-space: nowrap;
+        }
+        footer {
+            text-align: center;
+            background-color: #e90065;
+            color: white;
+            padding: 12px;
+            margin-top: 5px;
+            border-top: 6px solid #ff74b1;
+        }
+        footer p {
+            margin: 5px;
+            font-size: 12px;
+        }
+        footer a {
+            color: white;
+            text-decoration: none;
+        }
+        @media (max-width: 900px) {
+            header {
+                flex-direction: column;
+            }
+            .logo {
+                max-width: 75%;
+            }
+            nav {
+                justify-content: center;
+            }
+            .bienvenida, .mood {
+                grid-template-columns: 1fr;
+            }
+            .accesos {
+                grid-template-columns: 1fr;
+            }
+            .foto-principal {
+                min-height: 280px;
+            }
+            .foto-principal img {
+                min-height: 250px;
+            }
+        }
+        @media (max-width: 550px) {
+            main {
+                padding: 14px 10px 20px;
+            }
+            .texto-bienvenida {
+                padding: 24px;
+            }
+            .tarjeta {
+                grid-template-columns: 85px 1fr;
+            }
+            .tarjeta img {
+                width: 85px;
+                height: 95px;
+            }
+            .franja {
+                align-items: flex-start;
+                flex-direction: column;
+            }
+            nav a {
+                padding: 9px 10px;
+                font-size: 12px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="titulo">
+            <h1>ﾒ૦ﾒ૦ 💋.ᐟ</h1>
+            <img src="image/2000.png" alt="Logo de XOXO" class="logo-cabecera">
+        </div>
+        <nav class="barra-navegacion">
+            <a href="index.html" class="boton-nav activo">HOME!!</a>
+            <a href="pagina1.html" class="boton-nav">LETRAS</a>
+            <a href="pagina2.html" class="boton-nav">PARA TI.ᐟ</a>
+            <a href="pagina3.html" class="boton-nav">CANCIONES ♫</a>
+            <a href="pagina4.html" class="boton-nav">ARTISTAS 📽</a>
+            <a href="pagina5.html" class="boton-nav">PLAYLIST</a>
+        </nav>
+    </header>
+    <main>
+        <section class="bienvenida">
+            <div class="texto-bienvenida">
+                <span class="etiqueta">NO HAY REGLAS, SOLO BUENA MÚSICA ᯓ★</span>
+                <h1>SE TU A TRAVES<br>DE LA MUSICA.</h1>
+                <p>Bienvenida a XOXO, un espacio para descubrir canciones, conocer artistas y encontrar música para cada momento. Sube el volumen SIN MIEDO ♫</p>
+                <a class="boton" href="pagina3.html">EXPLORAR CANCIONES ↗</a>
+            </div>
+            <div class="foto-principal">
+                <img src="image/gif3.gif" alt="LMFAO, música y fiesta">
+                <div class="sticker">TURN IT UP ♫<br>↻ ◁ || ▷ ↺</div>
+            </div>
+        </section>
+        <section>
+            <div class="titulo-seccion">
+                <h2>TU VIDA, TU MUSICA ──.✦</h2>
+                <span>─── ⋆⋅☆⋅⋆ ──</span>
+            </div>
+            <div class="accesos">
+                <a class="tarjeta" href="pagina3.html">
+                    <img src="image/BAD.jpg" alt="Música electrónica">
+                    <div>
+                        <span class="numero">ִ၊၊||၊ | PLAY</span>
+                        <h3>Canciones</h3>
+                        <p>Siente, baila y repite.</p>
+                        <span class="mini-boton">DESCUBRIR ↗</span>
+                    </div>
+                </a>
+                <a class="tarjeta" href="pagina4.html">
+                    <img src="image/TS.jpg" alt="Sean Paul">
+                    <div>
+                        <span class="numero">🎤︎︎ | THE ARTISTS</span>
+                        <h3>Artistas</h3>
+                        <p>Conoce sonidos y estilos diferentes.</p>
+                        <span class="mini-boton">DESCUBRIR ↗</span>
+                    </div>
+                </a>
+                <a class="tarjeta" href="pagina6.html">
+                    <img src="image/tusplayli.jpg" alt="Playlist musical">
+                    <div>
+                        <span class="numero">☆ | THIS IS YOURS</span>
+                        <h3>Playlist</h3>
+                        <p>Encuentra la vibra del día.</p>
+                        <span class="mini-boton">DESCUBRIR ↗</span>
+                    </div>
+                </a>
+            </div>
+        </section>
+        <section class="mood">
+            <div class="mood-info">
+                <h2>¿Qué quieres sentir hoy? ♫</h2>
+                <p>No tienes que escuchar un solo género. Elige cómo te sientes y encuentra música que combine contigo.</p>
+            </div>
+            <div class="mood-opciones">
+                <h3>Escoge tu estilo, y #SELOQUEQUIERAS con el ⸝⸝</h3>
+                <div class="botones-mood">
+                    <a href="pagina5.html">҂VIBES YOUNG</a>
+                    <a href="pagina5.html">ST✰RGIRL ✮⋆˙</a>
+                    <a href="pagina5.html">K-POP MODE ✦</a>
+                    <a href="pagina5.html">AÑOS 2000.⋆♱</a>
+                </div>
+            </div>
+        </section>
+    </main>
+    <footer>
+        <p>QUE LA MUSICA SUENE MAS FUERTE QUE LOS PROBLEMAS.</p>
+        <p><a href="pagina3.html">Ir a canciones ♫</a></p>
+    </footer>
+</body>
+</html>

@@ -1,0 +1,748 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>XOXO.ᐟ | PLAYLISTS</title>
+    <link rel="icon" type="image/png" href="image/logopagina.png">
+
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background-color: #f8cce1;
+            color: #78204c;
+        }
+
+        /* CABECERA */
+        header {
+            display: flex;
+            align-items: center;
+            background-color: #ff4a98;
+            padding: 12px;
+            border-top: 8px solid #e90065;
+            border-bottom: 5px solid #d90065;
+        }
+
+        header>div {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 25px;
+            width: 100%;
+        }
+
+        .titulo {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .titulo h1 {
+            color: white;
+            font-size: 30px;
+            margin: 0;
+            text-shadow: 2px 2px #c90060;
+        }
+
+        .logo-cabecera {
+            width: 125px;
+            height: 75px;
+            object-fit: contain;
+        }
+
+        .barra-navegacion {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            flex-wrap: wrap;
+        }
+
+        .boton-nav {
+            text-decoration: none;
+            color: white;
+            background-color: #e90065;
+            padding: 8px 12px;
+            font-size: 13px;
+            border: 1px solid #ffb5d5;
+            border-radius: 5px;
+        }
+
+        .boton-nav:hover,
+        .boton-nav.activo {
+            background-color: white;
+            color: #e90065;
+        }
+
+        /* PRESENTACION */
+        .intro-playlist {
+            margin: 22px 18px 28px;
+            padding: 24px 28px;
+            background-color: #ff4a98;
+            border: 3px solid #e90065;
+            border-radius: 35px 85px 25px 65px;
+            display: grid;
+            grid-template-columns: minmax(0, 1fr) minmax(300px, 42%);
+            gap: 28px;
+            align-items: center;
+            position: relative;
+        }
+
+        .intro-playlist h2 {
+            color: white;
+            font-size: clamp(30px, 5vw, 50px);
+            line-height: .95;
+            margin: 8px 0 16px;
+            text-shadow: 4px 4px #c90060;
+        }
+
+        .intro-playlist p {
+            max-width: 580px;
+            color: white;
+            font-size: 13px;
+            line-height: 1.7;
+        }
+
+        /* IMAGENES DE LA CABECERA */
+        .imagenes-intro {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 14px;
+            width: 100%;
+            height: 230px;
+            padding: 7px;
+            background-color: #e90065;
+            border-radius: 28px 8px 28px 8px;
+            transform: rotate(1deg);
+        }
+
+        .imagenes-intro img {
+            display: block;
+            width: 100%;
+            height: 60%;
+            min-width: 0;
+            object-fit: cover;
+            border: 3px solid #ffe6f1;
+            background: #ffe6f1;
+        }
+
+        .imagenes-intro img:first-child {
+            border-radius: 24px 5px 5px 24px;
+        }
+
+        .imagenes-intro img:last-child {
+            border-radius: 5px 24px 24px 5px;
+        }
+
+        /* DECORACION TIPO MIXTAPE */
+        .mixtape {
+            width: 175px;
+            height: 135px;
+            background: #ffe6f1;
+            border: 4px solid #e90065;
+            box-shadow: 7px 7px #c90060;
+            transform: rotate(7deg);
+            padding: 12px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .mixtape-top {
+            display: flex;
+            justify-content: space-between;
+            color: #e90065;
+            font-weight: bold;
+            font-size: 10px;
+        }
+
+        .mixtape-lines {
+            height: 48px;
+            border-top: 3px dashed #ff4a98;
+            border-bottom: 3px dashed #ff4a98;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #e90065;
+            font-size: 24px;
+            letter-spacing: 4px;
+        }
+
+        .mixtape-bottom {
+            color: #e90065;
+            font-size: 9px;
+            font-weight: bold;
+            text-align: center;
+        }
+
+        /* CONTENIDO */
+        .contenido-playlist {
+            display: grid;
+            grid-template-columns: minmax(0, 1.05fr) minmax(0, 1.4fr);
+            gap: 22px;
+            margin: 0 18px 25px;
+            align-items: start;
+        }
+
+        .selector-playlist {
+            background: #ffe6f1;
+            border: 3px solid #e90065;
+            border-radius: 8px 32px 8px 32px;
+            padding: 17px;
+            transform: rotate(-.4deg);
+            box-shadow: 5px 5px #ffafd1;
+        }
+
+        .titulo-caja {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 8px;
+            border-bottom: 2px dashed #ff4a98;
+            padding-bottom: 11px;
+            margin-bottom: 14px;
+        }
+
+        .titulo-caja h3 {
+            margin: 0;
+            color: #e90065;
+            font-size: 20px;
+        }
+
+        .titulo-caja span {
+            font-size: 10px;
+            color: white;
+            background: #e90065;
+            padding: 5px 7px;
+        }
+
+        .opcion-playlist {
+            width: 100%;
+            display: grid;
+            grid-template-columns: 65px minmax(0, 1fr) auto;
+            gap: 11px;
+            align-items: center;
+            text-align: left;
+            margin-bottom: 12px;
+            padding: 9px;
+            border: 2px solid #ffafd1;
+            border-radius: 5px 22px 5px 22px;
+            background: #fff0f7;
+            color: #78204c;
+            cursor: pointer;
+            font-family: Arial, sans-serif;
+            transition: .2s;
+        }
+
+        .opcion-playlist:last-child {
+            margin-bottom: 0;
+        }
+
+        .opcion-playlist:hover,
+        .opcion-playlist.seleccionada {
+            background: #ffb5d5;
+            border-color: #e90065;
+            transform: translateX(4px);
+        }
+
+        .opcion-playlist img {
+            width: 65px;
+            height: 65px;
+            object-fit: cover;
+            border: 2px solid #e90065;
+            border-radius: 12px 4px 12px 4px;
+            background: #ffc6df;
+        }
+
+        .opcion-playlist strong {
+            display: block;
+            color: #e90065;
+            font-size: 14px;
+            margin-bottom: 4px;
+        }
+
+        .opcion-playlist small {
+            display: block;
+            font-size: 10px;
+            line-height: 1.4;
+        }
+
+        .play-mini {
+            color: #e90065;
+            font-size: 11px;
+            font-weight: bold;
+        }
+
+        /* PLAYLIST SELECCIONADA */
+        .detalle-playlist {
+            background: #ff1682;
+            border: 3px solid #e90065;
+            border-radius: 35px 8px 35px 8px;
+            padding: 18px;
+            color: white;
+            position: relative;
+            box-shadow: 5px 5px #ffafd1;
+        }
+
+        .detalle-cabecera {
+            display: grid;
+            grid-template-columns: 175px minmax(0, 1fr);
+            gap: 18px;
+            align-items: center;
+        }
+
+        .detalle-cabecera img {
+            width: 100%;
+            aspect-ratio: 1 / 1;
+            object-fit: cover;
+            border: 5px solid #ffafd1;
+            border-radius: 5px 24px 5px 24px;
+            box-shadow: 5px 5px #c90060;
+            background: #ffe6f1;
+        }
+
+        .detalle-cabecera .numero {
+            font-size: 10px;
+            letter-spacing: 2px;
+            font-weight: bold;
+            color: #ffe6f1;
+        }
+
+        .detalle-cabecera h3 {
+            color: white;
+            font-size: clamp(24px, 3vw, 37px);
+            line-height: .95;
+            margin: 9px 0;
+        }
+
+        .detalle-cabecera p {
+            font-size: 12px;
+            line-height: 1.6;
+            margin: 0;
+        }
+
+        .etiquetas {
+            display: flex;
+            gap: 7px;
+            flex-wrap: wrap;
+            margin-top: 12px;
+        }
+
+        .etiquetas span {
+            background: #ffe6f1;
+            color: #e90065;
+            border-radius: 3px 10px 3px 10px;
+            padding: 6px 9px;
+            font-size: 9px;
+            font-weight: bold;
+        }
+
+        /* LISTA DE CANCIONES */
+        .tracklist {
+            background: #fff0f7;
+            color: #78204c;
+            margin-top: 20px;
+            padding: 13px 16px;
+            border: 2px solid #ffafd1;
+            border-radius: 5px 20px 5px 20px;
+        }
+
+        .tracklist h4 {
+            color: #e90065;
+            font-size: 15px;
+            margin: 0 0 9px;
+        }
+
+        .track {
+            display: grid;
+            grid-template-columns: 25px minmax(0, 1fr) auto;
+            gap: 8px;
+            align-items: center;
+            border-bottom: 1px dashed #ffafd1;
+            padding: 9px 0;
+            font-size: 12px;
+        }
+
+        .track:last-child {
+            border-bottom: 0;
+        }
+
+        .track b {
+            color: #e90065;
+        }
+
+        .track span:last-child {
+            font-size: 10px;
+            color: #e90065;
+        }
+
+        /* MENSAJE FINAL */
+        .nota-final {
+            margin: 0 18px 25px;
+            background: #ffe6f1;
+            border-left: 8px solid #e90065;
+            border-radius: 4px 25px 4px 25px;
+            padding: 17px 20px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 15px;
+        }
+
+        .nota-final h3 {
+            margin: 0 0 5px;
+            color: #e90065;
+            font-size: 17px;
+        }
+
+        .nota-final p {
+            margin: 0;
+            font-size: 12px;
+            line-height: 1.6;
+        }
+
+        .nota-final .decoracion {
+            color: #e90065;
+            font-size: 34px;
+            transform: rotate(10deg);
+        }
+
+        footer {
+            text-align: center;
+            background: #e90065;
+            color: white;
+            padding: 12px;
+            border-top: 6px solid #ff74b1;
+        }
+
+        footer p {
+            margin: 5px;
+            font-size: 12px;
+        }
+
+        footer a {
+            color: white;
+            text-decoration: none;
+        }
+
+        /* AJUSTE PARA TABLET */
+        @media(max-width: 800px) {
+            header {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+
+            header>div {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 10px;
+            }
+
+            .contenido-playlist {
+                grid-template-columns: 1fr;
+            }
+
+            .intro-playlist {
+                grid-template-columns: minmax(0, 1fr) 38%;
+                gap: 18px;
+            }
+
+            .imagenes-intro {
+                height: 190px;
+            }
+
+            .detalle-cabecera {
+                grid-template-columns: 150px minmax(0, 1fr);
+            }
+        }
+
+        /* AJUSTE PARA CELULAR */
+        @media(max-width: 520px) {
+            .intro-playlist {
+                grid-template-columns: 1fr;
+                margin: 14px 10px 22px;
+                padding: 18px;
+            }
+
+            .imagenes-intro {
+                height: 175px;
+            }
+
+            .contenido-playlist {
+                margin: 0 10px 20px;
+            }
+
+            .detalle-cabecera {
+                grid-template-columns: 1fr;
+            }
+
+            .detalle-cabecera img {
+                width: 65%;
+                max-width: 230px;
+            }
+
+            .nota-final {
+                margin: 0 10px 20px;
+                align-items: flex-start;
+            }
+
+            .titulo h1 {
+                font-size: 24px;
+            }
+
+            .opcion-playlist {
+                grid-template-columns: 55px minmax(0, 1fr) auto;
+            }
+
+            .opcion-playlist img {
+                width: 55px;
+                height: 55px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <header>
+        <div>
+            <div class="titulo">
+                <h1>ﾒ૦ﾒ૦ 💋.ᐟ</h1>
+                <img src="image/2000.png" alt="Logo de XOXO" class="logo-cabecera">
+            </div>
+
+            <nav class="barra-navegacion">
+                <a href="index.html" class="boton-nav">HOME!!</a>
+                <a href="pagina1.html" class="boton-nav">LETRAS</a>
+                <a href="pagina2.html" class="boton-nav">PARA TI.ᐟ</a>
+                <a href="pagina3.html" class="boton-nav">CANCIONES ♫</a>
+                <a href="pagina4.html" class="boton-nav">ARTISTAS 📽</a>
+                <a href="pagina5.html" class="boton-nav activo">PLAYLIST</a>
+            </nav>
+        </div>
+    </header>
+
+    <section class="intro-playlist">
+        <div>
+            <h2>SUBE EL VOLUMEN<br>Y OLVIDA EL RESTO</h2>
+
+            <p>
+                A veces queremos cantar a todo pulmón, otras recordar viejos tiempos o simplemente encontrar una canción que combine con nuestro día.
+                Por eso reunimos diferentes mezclas, cada una con su propio estilo y personalidad. ¿Cuál va contigo hoy?
+            </p>
+        </div>
+
+        <div class="imagenes-intro">
+            <img src="image/1.jpg" alt="Imagen musical 1">
+            <img src="image/2.jpg" alt="Imagen musical 2">
+        </div>
+    </section>
+
+    <main class="contenido-playlist">
+
+        <section class="selector-playlist">
+
+            <div class="titulo-caja">
+                <h3>ESCOGE LA MUSICA PARA EL MOMENTO</h3>
+            </div>
+
+            <button class="opcion-playlist seleccionada" onclick="cambiarPlaylist(0, this)">
+                <img src="image/old.jpg" alt="Portada de Viejiitas pero bonitas">
+                <span>
+                    <strong>VIEJITAS, PERO BONITAS</strong>
+                    <small>Clásicos que nunca pasan de moda.</small>
+                </span>
+                <span class="play-mini">Ver ↗</span>
+            </button>
+
+            <button class="opcion-playlist" onclick="cambiarPlaylist(1, this)">
+                <img src="image/est.jpg" alt="Portada de Internet Obsession">
+                <span>
+                    <strong>INTERNET OBSESSION</strong>
+                    <small>Un poquito de caos y mucho estilo.</small>
+                </span>
+                <span class="play-mini">Ver ↗</span>
+            </button>
+
+            <button class="opcion-playlist" onclick="cambiarPlaylist(2, this)">
+                <img src="image/vi.jpg" alt="Portada de Vibes Young">
+                <span>
+                    <strong>VIBES YOUNG</strong>
+                    <small>Para revivir el SWAG!.</small>
+                </span>
+                <span class="play-mini">Ver ↗</span>
+            </button>
+
+            <button class="opcion-playlist" onclick="cambiarPlaylist(3, this)">
+                <img src="image/mex.jpg" alt="Portada de Puro Sabor MX">
+                <span>
+                    <strong>PURO MX</strong>
+                    <small>México también tiene soundtrack.</small>
+                </span>
+                <span class="play-mini">Ver↗</span>
+            </button>
+
+        </section>
+
+        <section class="detalle-playlist">
+
+            <div class="detalle-cabecera">
+                <img id="portadaMix" src="image/old.jpg" alt="Portada de la playlist seleccionada">
+
+                <div>
+                    <span class="numero" id="numeroMix">XOXO | PLAYLIST</span>
+                    <h3 id="tituloMix">VIEJITAS, PERO BONITAS</h3>
+
+                    <p id="descripcionMix">
+                        Canciones que tienen algo especial. Esos clásicos
+                        que puedes escuchar una y otra vez sin cansarte,
+                        aunque hayan pasado los años.
+                    </p>
+
+                    <div class="etiquetas" id="etiquetasMix">
+                        <span>80s</span>
+                        <span>CLASSICS</span>
+                        <span>NOSTALGIA</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="tracklist">
+                <div id="cancionesMix">
+                    <div class="track">
+                        <b>01</b>
+                        <span>Running Up That Hill — Kate Bush</span>
+                        <span>CLASSIC</span>
+                    </div>
+                    <div class="track">
+                        <b>02</b>
+                        <span>Girls Just Want to Have Fun — Cyndi Lauper</span>
+                        <span>POP</span>
+                    </div>
+                    <div class="track">
+                        <b>03</b>
+                        <span>Take on Me — a-ha</span>
+                        <span>80s</span>
+                    </div>
+                    <div class="track">
+                        <b>04</b>
+                        <span>Every Breath You Take — The Police</span>
+                        <span>OLDIE</span>
+                    </div>
+                    <div class="track">
+                        <b>05</b>
+                        <span>Don't Stop Believin' — Journey</span>
+                        <span>ROCK</span>
+                    </div>
+                </div>
+            </div>
+
+        </section>
+    </main>
+
+    <section class="nota-final">
+        <div>
+            <h3>EL VOLUMEN AL MÁXIMO, LAS PREOCUPACIONES EN PAUSA.</h3>
+            <p>
+                Cuatro mezclas, diferentes épocas y un montón de canciones que tienen algo que contar. Descubre nuevos sonidos o vuelve a esos que nunca pasan de moda.
+            </p>
+        </div>
+    </section>
+
+    <footer>
+        <p>HAY DIAS EN LOS QUE NO SE NECESITTAN PALABRAS SOLO MUSICA</p>
+        <p><a href="index.html">Volver al inicio</a></p>
+    </footer>
+
+    <script>
+        const mezclas = [
+            {
+                titulo: "VIEJITAS, PERO BONITAS",
+                descripcion: "Canciones que tienen algo especial. Esos clásicos que puedes escuchar una y otra vez sin cansarte, aunque hayan pasado los años.",
+                portada: "image/old.jpg",
+                canciones: [
+                    ["Running Up That Hill — Kate Bush", "CLASSIC"],
+                    ["Take on Me — a-ha", "80s"],
+                    ["Every Breath You Take — The Police", "OLDIE"],
+                    ["Don't Stop Believin' — Journey", "ROCK"],
+                    ["Eyes Without A Face — Billy Idol", "CLASSIC"],
+                    ["Your Love — The Outfield", "80s"]
+                ],
+                etiquetas: ["80s", "CLASSICS", "NOSTALGIA"]
+            },
+            {
+                titulo: "INTERNET OBSESSION",
+                descripcion: "Una mezcla de sonidos alternativos, ritmos extraños y canciones que parecen sacadas de otro rincón de internet.",
+                portada: "image/est.jpg",
+                canciones: [
+                    ["Love Potions — BJ Lips, princess paparazzi", "ALT"],
+                    ["FASHION — Britney Manson", "DARK"],
+                    ["Nuts — Lil Peep, rainy bear", "SLOW"],
+                    ["Push The Feeling On — Zarazzie", "REMIX"],
+                    ["you broke my heart — kobzx2z, Myla", "SLOWED"],
+                    ["HEAVY LOVE — ODECORE, Odetari", "DARK"]
+                ],
+                etiquetas: ["ALTERNATIVE", "INTERNET", "OBSESSION"]
+            },
+            {
+                titulo: "VIBES YOUNG",
+                descripcion: "Una colección de canciones para recordar esos temazos que sonaban en todas partes. Música para cantar, bailar y no quedarse quieta.",
+                portada: "image/vi.jpg",
+                canciones: [
+                    ["Heroes (we could be) — Alesso, Tove Lo", "EDM"],
+                    ["She Doesn't Mind — Sean Paul", "DANCEHALL"],
+                    ["Whistle — Flo Rida", "HYPE"],
+                    ["Where Them Girls At — David Guetta", "PARTY"],
+                    ["I Cry — Flo Rida", "2010s"]
+                ],
+                etiquetas: ["2010s", "PARTY", "GOOD VIBES"]
+            },
+            {
+                titulo: "PURO SABOR MX",
+                descripcion: "Un poquito de música mexicana, ritmos latinos y canciones que se disfrutan mucho más cuando todos se saben el coro.",
+                portada: "image/mex.jpg",
+                canciones: [
+                    ["Tiene Espinas El Rosal — Grupo Cañaveral", "CUMBIA"],
+                    ["Mañana Voy A Conquistarla — Gerardo Ortiz", "MEXICO"],
+                    ["Cariñito — Lila Downs, Panteón Rococó", "CUMBIA"],
+                    ["Ojitos Mentirosos — Sonido desconocido", "LATIN"],
+                    ["Que Locura Enamorarme De Ti — Eddie Santiago", "SALSA"]
+                ],
+                etiquetas: ["MEXICO", "LATINO", "FIESTA"]
+            }
+        ];
+
+        function cambiarPlaylist(indice, boton) {
+            const mezcla = mezclas[indice];
+
+            document.getElementById("portadaMix").src = mezcla.portada;
+            document.getElementById("portadaMix").alt = "Portada de " + mezcla.titulo;
+            document.getElementById("tituloMix").textContent = mezcla.titulo;
+            document.getElementById("descripcionMix").textContent = mezcla.descripcion;
+
+            document.getElementById("etiquetasMix").innerHTML =
+                mezcla.etiquetas.map(etiqueta =>
+                    "<span>" + etiqueta + "</span>"
+                ).join("");
+
+            document.getElementById("cancionesMix").innerHTML =
+                mezcla.canciones.map((cancion, posicion) =>
+                    "<div class='track'>" +
+                    "<b>" + String(posicion + 1).padStart(2, "0") + "</b>" +
+                    "<span>" + cancion[0] + "</span>" +
+                    "<span>" + cancion[1] + "</span>" +
+                    "</div>"
+                ).join("");
+            document.querySelectorAll(".opcion-playlist").forEach(opcion =>
+                opcion.classList.remove("seleccionada")
+            );
+            boton.classList.add("seleccionada");
+        }
+    </script>
+</body>
+</html>

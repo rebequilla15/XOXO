@@ -1,0 +1,501 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>XOXO.ᐟ | ARTISTAS</title>
+    <link rel="icon" type="image/png" href="image/logopagina.png">
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background-color: #f8cce1;
+            color: #f21684;
+        }
+        header {
+            display: flex;
+            flex-direction: row;
+            justify-content: flex-start;
+            align-items: center;
+            background-color: #ff4a98;
+            padding: 12px;
+            border-top: 8px solid #e90065;
+            border-bottom: 5px solid #d90065;
+            gap: 20px;
+        }
+        header > div {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 25px;
+            width: 100%;
+        }
+        .titulo {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+        .titulo h1 {
+            color: white;
+            font-size: 30px;
+            margin: 0;
+            text-shadow: 2px 2px #c90060;
+        }
+        .logo-cabecera {
+            width: 125px;
+            height: 75px;
+            object-fit: contain;
+        }
+        .barra-navegacion {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            flex-wrap: wrap;
+        }
+        .boton-nav {
+            text-decoration: none;
+            color: white;
+            background-color: #f91f7d;
+            padding: 8px 12px;
+            font-size: 13px;
+            border: 1px solid #ffb5d5;
+            border-radius: 5px;
+        }
+        .boton-nav:hover,
+        .boton-nav.activo {
+            background-color: white;
+            color: #e90065;
+        }
+        .intro-artistas {
+            margin: 18px 15px;
+            min-height: 190px;
+            background-color: #ff2382;
+            color: white;
+            padding: 22px;
+            display: grid;
+            grid-template-columns: 1fr auto;
+            align-items: center;
+            gap: 18px;
+            border: 3px solid #ff8fc0;
+            border-radius: 5px 32px 5px 32px;
+            position: relative;
+            overflow: hidden;
+        }
+        .intro-artistas h2 {
+            font-size: clamp(32px, 5vw, 58px);
+            line-height: 0.95;
+            margin: 0 0 12px;
+            text-shadow: 4px 4px #bd0054;
+        }
+        .intro-artistas p {
+            max-width: 580px;
+            margin: 0;
+            line-height: 1.6;
+            font-size: 14px;
+        }
+        .imagen-sello {
+            width: 300px;
+            height: 160px;
+            object-fit: cover;
+            display: block;
+            border: 5px solid #e90065;
+            border-radius: 30% 5% 30% 5% / 30% 8% 30% 8%;
+            flex-shrink: 0;
+        }
+        main {
+            display: grid;
+            grid-template-columns: minmax(0, 1.15fr) minmax(0, 1.85fr);
+            gap: 15px;
+            padding: 0 15px 16px;
+            align-items: start;
+        }
+        .artista-destacado {
+            background-color: #ff1682;
+            border: 3px solid #e90065;
+            padding: 13px;
+            color: white;
+            border-radius: 28px 5px 28px 5px;
+            position: relative;
+        }
+        .artista-destacado .encabezado-mini {
+            font-size: 11px;
+            font-weight: bold;
+            letter-spacing: 2px;
+            margin: 2px 0 10px;
+        }
+        .foto-destacada {
+            width: 100%;
+            height: 300px;
+            object-fit: cover;
+            display: block;
+            border: 5px solid #ffafd1;
+            box-shadow: 6px 6px #c90060;
+            background-color: #ffe6f1;
+        }
+        .datos-destacados {
+            padding: 13px 4px 5px;
+        }
+        .datos-destacados h3 {
+            font-size: clamp(24px, 3vw, 36px);
+            margin: 0 0 5px;
+            text-shadow: 2px 2px #c90060;
+        }
+        .datos-destacados p {
+            font-size: 13px;
+            line-height: 1.6;
+            margin: 8px 0;
+        }
+        .tag-musical {
+            display: inline-block;
+            background-color: #ffe6f1;
+            color: #e90065;
+            padding: 6px 9px;
+            font-size: 10px;
+            font-weight: bold;
+            margin: 3px 4px 0 0;
+            border-radius: 12px;
+        }
+        .boton-rosa {
+            display: inline-block;
+            text-decoration: none;
+            background-color: #e90065;
+            color: white;
+            border: 2px solid #ffafd1;
+            padding: 9px 12px;
+            font-size: 11px;
+            font-weight: bold;
+            cursor: pointer;
+            margin-top: 8px;
+        }
+        .boton-rosa:hover {
+            background-color: white;
+            color: #e90065;
+        }
+        .lado-derecho {
+            min-width: 0;
+        }
+        .franja-titulo {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 10px;
+            margin: 0 0 10px;
+        }
+        .franja-titulo h3 {
+            color: #e90065;
+            margin: 0;
+            font-size: 21px;
+        }
+        .franja-titulo span {
+            background-color: #e90065;
+            color: white;
+            padding: 6px 9px;
+            font-size: 10px;
+            font-weight: bold;
+            transform: rotate(2deg);
+        }
+        .rejilla-artistas {
+            display: grid;
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            gap: 12px;
+        }
+        .tarjeta-artista {
+            min-width: 0;
+            display: grid;
+            grid-template-columns: 96px minmax(0, 1fr);
+            background-color: #ffe6f1;
+            border: 2px solid #e90065;
+            padding: 8px;
+            gap: 10px;
+            position: relative;
+        }
+        .tarjeta-artista:nth-child(4),
+        .tarjeta-artista:nth-child(5) {
+            background-color: #ffb5d5;
+        }
+        .foto-tarjeta {
+            width: 96px;
+            height: 112px;
+            object-fit: cover;
+            border: 3px solid #ff4a98;
+            background-color: #ffc6df;
+        }
+        .info-tarjeta {
+            align-self: center;
+            min-width: 0;
+        }
+        .info-tarjeta small {
+            color: #e90065;
+            font-size: 9px;
+            font-weight: bold;
+            letter-spacing: 1px;
+        }
+        .info-tarjeta h4 {
+            color: #e90065;
+            font-size: 16px;
+            margin: 5px 0;
+            overflow-wrap: anywhere;
+        }
+        .info-tarjeta p {
+            font-size: 11px;
+            line-height: 1.4;
+            margin: 0;
+        }
+        .info-tarjeta button {
+            margin-top: 8px;
+            background-color: #e90065;
+            color: white;
+            border: 1px solid #ff8fc0;
+            padding: 6px 8px;
+            font-size: 10px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+        .info-tarjeta button:hover {
+            background-color: white;
+            color: #e90065;
+        }
+        footer {
+            text-align: center;
+            background-color: #e90065;
+            color: white;
+            padding: 12px;
+            border-top: 6px solid #ff74b1;
+        }
+        footer p {
+            margin: 5px;
+            font-size: 12px;
+        }
+        footer a {
+            color: white;
+            text-decoration: none;
+        }
+        @media(max-width: 900px) {
+            header {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+            header > div {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 10px;
+            }
+            main {
+                grid-template-columns: 1fr;
+            }
+            .foto-destacada {
+                height: 260px;
+            }
+        }
+        @media(max-width: 600px) {
+            .intro-artistas {
+                grid-template-columns: 1fr;
+            }
+            .imagen-sello {
+                justify-self: end;
+                width: min(100%, 250px);
+                height: 130px;
+            }
+            .rejilla-artistas {
+                grid-template-columns: 1fr;
+            }
+            .tarjeta-artista {
+                grid-template-columns: 90px minmax(0, 1fr);
+            }
+            .foto-tarjeta {
+                width: 90px;
+                height: 100px;
+            }
+            .titulo h1 {
+                font-size: 24px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div>
+            <div class="titulo">
+                <h1>ﾒ૦ﾒ૦ 💋.ᐟ</h1>
+                <img src="image/2000.png" alt="Logo de XOXO" class="logo-cabecera">
+            </div>
+            <nav class="barra-navegacion">
+                <a href="index.html" class="boton-nav">HOME!!</a>
+                <a href="pagina1.html" class="boton-nav">LETRAS</a>
+                <a href="pagina2.html" class="boton-nav">PARA TI.ᐟ</a>
+                <a href="pagina3.html" class="boton-nav">CANCIONES ♫</a>
+                <a href="pagina4.html" class="boton-nav activo">ARTISTAS 📽</a>
+                <a href="pagina5.html" class="boton-nav">PLAYLIST</a>
+            </nav>
+        </div>
+    </header>
+    <section class="intro-artistas">
+        <div>
+            <h2>ARTISTAS CON  ACTITUD ✌︎</h2>
+            <p>Cada artista tiene una historia, un sonido y una forma única de expresarse. 
+            Desde ritmos que hacen bailar hasta canciones que se quedan en la cabeza, estilos han marcado diferentes épocas de la música.</p>
+        </div>
+        <img src="image/artistas.gif" alt="Público en un concierto" class="imagen-sello">
+    </section>
+    <main>
+        <section class="artista-destacado">
+            <div class="encabezado-mini"> ARTISTA EN PRIMER PLANO </div>
+            <img src="image/t1.jpg" alt="Stray Kids" class="foto-destacada" id="fotoDestacada">
+            <div class="datos-destacados">
+                <h3 id="nombreDestacado">TAYLOR SWIFT</h3>
+                <p id="descripcionDestacada">Cantante y compositora conocida por convertir historias personales, emociones y recuerdos en canciones que conectan con sus fans.</p>
+                <div id="generosDestacados"><span class="tag-musical">POP</span><span class="tag-musical">COUNTRY</span><span class="tag-musical">SINGER-SONGWRITER</span></div>
+                <a href="pagina3.html" class="boton-rosa">IR A CANCIONES ♫</a>
+            </div>
+        </section>
+        <section class="lado-derecho">
+            <div class="rejilla-artistas">
+                <article class="tarjeta-artista">
+                    <img src="image/e.jpg" alt="Stray Kids" class="foto-tarjeta">
+                    <div class="info-tarjeta">
+                        <small>K-POP</small>
+                        <h4>Stray Kids</h4>
+                        <p>Intensos · Creativos · Atractivos </p>
+                        <button onclick="mostrarArtista('stray')">DESCUBRIR ↗</button>
+                    </div>
+                </article>
+                <article class="tarjeta-artista">
+                    <img src="image/a.jpg" alt="Kali Uchis" class="foto-tarjeta">
+                    <div class="info-tarjeta">
+                        <small>NEO-SOUL</small>
+                        <h4>Kali Uchis</h4>
+                        <p>Dream · Retro · Enigmática </p>
+                        <button onclick="mostrarArtista('kali')">DESCUBRIR ↗</button>
+                    </div>
+                </article>
+                <article class="tarjeta-artista">
+                    <img src="image/f.jpg" alt="Gorillaz" class="foto-tarjeta">
+                    <div class="info-tarjeta">
+                        <small>HIP-HOP</small>
+                        <h4>Gorillaz</h4>
+                        <p>Misteriosos · Innovadores · Excéntricos · Visionarios</p>
+                        <button onclick="mostrarArtista('gorillaz')">DESCUBRIR ↗</button>
+                    </div>
+                </article>
+                <article class="tarjeta-artista">
+                    <img src="image/b.jpg" alt="Lila Downs" class="foto-tarjeta">
+                    <div class="info-tarjeta">
+                        <small>FOLKLOR</small>
+                        <h4>Lila Downs</h4>
+                        <p>Raíces · Poderosa · Auténtica · Multicultural</p>
+                        <button onclick="mostrarArtista('lila')">DESCUBRIR ↗</button>
+                    </div>
+                </article>
+                <article class="tarjeta-artista">
+                    <img src="image/g.jpg" alt="Nicki Minaj" class="foto-tarjeta">
+                    <div class="info-tarjeta">
+                        <small>RAP & POP</small>
+                        <h4>Nicki Minaj</h4>
+                        <p>Poderosa · Creativa · Atrevida · Icónica</p>
+                        <button onclick="mostrarArtista('nicki')">DESCUBRIR ↗</button>
+                    </div>
+                </article>
+                <article class="tarjeta-artista">
+                    <img src="image/c.jpg" alt="Arctic Monkeys" class="foto-tarjeta">
+                    <div class="info-tarjeta">
+                        <small>INDIE ROCK</small>
+                        <h4>Arctic Monkeys</h4>
+                        <p>Alternativos · Intenso · Profundos · Originales</p>
+                        <button onclick="mostrarArtista('arctic')">DESCUBRIR ↗</button>
+                    </div>
+                </article>
+                <article class="tarjeta-artista">
+                    <img src="image/h.jpg" alt="Avicii" class="foto-tarjeta">
+                    <div class="info-tarjeta">
+                        <small>EDM</small>
+                        <h4>Avicii</h4>
+                        <p>Electrónico · Legendario · Emotivo · Épico</p>
+                        <button onclick="mostrarArtista('avicii')">DESCUBRIR ↗</button>
+                    </div>
+                </article>
+                <article class="tarjeta-artista">
+                    <img src="image/d.jpg" alt="Los Ángeles Azules" class="foto-tarjeta">
+                    <div class="info-tarjeta">
+                        <small>CUMBIA MEXICANA</small>
+                        <h4>Los Angeles Azules</h4>
+                        <p>Tropical · Románticos · Bailables · Icónicos</p>
+                        <button onclick="mostrarArtista('azules')">DESCUBRIR ↗</button>
+                    </div>
+                </article>
+            </div>
+        </section>
+    </main>
+    <footer>
+        <p>LA MUSICA CONECTA GENTE.</p>
+        <p><a href="index.html">Volver al inicio</a></p>
+    </footer>
+    <script>
+        const artistas = {
+            stray: {
+                nombre: "STRAY KIDS",
+                foto: "image/b2.jpg",
+                descripcion: "Un grupo de K-pop conocido por sus actuaciones intensas, bases potentes y una identidad musical muy marcada.",
+                generos: ["K-POP", "HIP-HOP", "PERFORMANCE"]
+            },
+            kali: {
+                nombre: "KALI UCHIS",
+                foto: "image/c3.jpg",
+                descripcion: "Cantante y compositora que mezcla R&B suave, sonidos retro y ritmos latinos. Su música tiene una atmósfera dreamy, elegante y muy distintiva.",
+                generos: ["ALTERNATIVE R&B", "NEO-SOUL", "LATIN POP"]
+            },
+            gorillaz: {
+                nombre: "GORILLAZ",
+                foto: "image/e4.jpg",
+                descripcion: "Banda virtual británica reconocida por sus personajes animados y su mezcla de sonidos alternativos, hip-hop y electrónica. Su universo musical combina arte, animación y cultura pop.",
+                generos: ["ALTERNATIVE", "HIP-HOP", "ELECTRONIC"]
+            },
+            lila: {
+                nombre: "LILA DOWNS",
+                foto: "image/f5.jpg",
+                descripcion: "Cantante mexicana que combina música tradicional de México con sonidos contemporáneos. Su estilo incorpora ritmos regionales, lenguas indígenas y una voz poderosa que celebra la diversidad cultural.",
+                generos: ["MÚSICA MEXICANA", "FOLK", "WORLD MUSIC"]
+            },
+            nicki: {
+                nombre: "NICKI MINAJ",
+                foto: "image/a1.jpg",
+                descripcion: "Rapera y cantante conocida por su flow versátil, personalidad creativa y estilo visual llamativo. Combina rap con melodías pop y una energía inconfundible.",
+                generos: ["RAP", "HIP-HOP", "POP-RAP"]
+            },
+            arctic: {
+                nombre: "ARCTIC MONKEYS",
+                foto: "image/d6.jpg",
+                descripcion: "Banda británica conocida por sus guitarras distintivas, letras ingeniosas y un sonido que evoluciona entre el rock energético y melodías más oscuras y elegantes.",
+                generos: ["INDIE ROCK", "ALTERNATIVE ROCK", "POST-PUNK REVIVAL"]
+            },
+            avicii: {
+                nombre: "AVICII",
+                foto: "image/g7.jpg",
+                descripcion: "DJ y productor sueco que ayudó a popularizar la música electrónica con melodías memorables y mezclas de EDM, house y sonidos folk. Su música combina energía y emoción.",
+                generos: ["EDM", "PROGRESSIVE HOUSE", "DANCE"]
+            },
+            azules: {
+                nombre: "LOS ÁNGELES AZULES",
+                foto: "image/j9.jpg",
+                descripcion: "Grupo mexicano reconocido por su cumbia romántica y sus ritmos tropicales. Sus teclados y melodías pegajosas convierten sus canciones en clásicos de las fiestas y reuniones.",
+                generos: ["CUMBIA MEXICANA", "CUMBIA SONIDERA", "TROPICAL"]
+            }
+        };
+        function mostrarArtista(clave) {
+            const artista = artistas[clave];
+            if (!artista) {
+                return;
+            }
+            document.getElementById("fotoDestacada").src = artista.foto;
+            document.getElementById("fotoDestacada").alt = artista.nombre;
+            document.getElementById("nombreDestacado").textContent = artista.nombre;
+            document.getElementById("descripcionDestacada").textContent = artista.descripcion;
+            document.getElementById("generosDestacados").innerHTML = artista.generos.map(function(genero) {
+                return '<span class="tag-musical">' + genero + '</span>';
+            }).join('');
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,820 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>
+        XOXO.ᐟ | LETRAS
+    </title>
+    <link href="image/logopagina.png" rel="icon" type="image/png" />
+    <style>
+        * {
+            box-sizing: border-box
+        }
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background: #f8cce1;
+            color: #78204c
+        }
+header {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #ff4a98;
+    padding: 12px;
+    border-top: 8px solid #e90065;
+    border-bottom: 5px solid #d90065;
+    gap: 20px;
+}
+        header>div {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 15px;
+            width: 100%
+        }
+.titulo {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+        .titulo h1 {
+    color: white;
+    font-size: 30px;
+    margin: 0;
+    text-shadow: 2px 2px #c90060;
+}
+        .logo-cabecera {
+    width: 125px;
+    height: 75px;
+    object-fit: contain;
+}
+        .barra-navegacion {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-top: 0;
+    flex-wrap: wrap;
+}
+.boton-nav {
+    text-decoration: none;
+    color: white;
+    background-color: #e90065;
+    padding: 8px 12px;
+    font-size: 13px;
+    border: 1px solid #ffb5d5;
+    border-radius: 5px;
+}
+.boton-nav:hover, .boton-nav.activo {
+    background-color: white;
+    color: #e90065;
+}
+        .presentacion {
+            margin: 15px 15px 10px;
+            padding: 16px 20px;
+            background: #ff1078;
+            color: white;
+            border: 3px solid #e90065;
+            border-radius: 5px 25px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 15px
+        }
+        .presentacion h2 {
+            font-size: clamp(26px, 4vw, 42px);
+            margin: 0 0 6px;
+            text-shadow: 3px 3px #c90060
+        }
+        .presentacion p {
+            margin: 0;
+            line-height: 1.4;
+            font-size: 14px
+        }
+        .sticker {
+            background: #ffb5d5;
+            color: #e90065;
+            border: 2px solid #e90065;
+            padding: 12px 16px;
+            font-weight: bold;
+            transform: rotate(5deg);
+            text-align: center;
+            min-width: 100px;
+            flex-shrink: 0
+        }
+        main {
+            padding: 0 15px 15px;
+            display: grid;
+            grid-template-columns: minmax(220px, .9fr) minmax(300px, 1.25fr) minmax(220px, .85fr);
+            gap: 10px;
+            align-items: start
+        }
+        .columna {
+            min-width: 0;
+            background: #ffe6f1;
+            border: 2px solid #e90065;
+            padding: 10px;
+        }
+        .columna:nth-child(1) {
+            border-radius: 20px 5px 5px 5px
+        }
+        .columna:nth-child(2) {
+            background: #ff1682;
+            border: 3px solid #e90065;
+            border-radius: 5px 22px
+        }
+        .columna:nth-child(3) {
+            border-radius: 5px 5px 20px 5px
+        }
+        h3 {
+            color: #e90065;
+            font-size: 16px;
+            margin: 3px 0 8px
+        }
+        .columna:nth-child(2) h3 {
+            color: white
+        }
+        .opcion-cancion {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            padding: 7px;
+            background: #fff0f7;
+            border: 1px solid #ffafd1;
+            margin-bottom: 7px
+        }
+        .mini-portada {
+            width: 45px;
+            height: 45px;
+            object-fit: cover;
+            flex-shrink: 0;
+            background: #ffb5d5;
+            border: 2px solid #e90065
+        }
+        .datos-cancion {
+            flex: 1;
+            min-width: 0;
+            overflow-wrap: anywhere
+        }
+        .datos-cancion strong {
+            display: block;
+            color: #e90065;
+            font-size: 12px;
+            line-height: 1.25
+        }
+        .datos-cancion span {
+            display: block;
+            font-size: 10px;
+            line-height: 1.3;
+            margin-top: 3px
+        }
+        .boton-ver {
+            background: #e90065;
+            color: white;
+            border: 1px solid #ff8fc0;
+            border-radius: 3px;
+            padding: 7px;
+            cursor: pointer;
+            font-size: 10px;
+            font-weight: bold;
+            flex-shrink: 0
+        }
+        .boton-ver:hover {
+            background: #ff4a98
+        }
+        .portada-grande {
+            width: 100%;
+            max-width: 180px;
+            height: 180px;
+            display: block;
+            object-fit: cover;
+            margin: 0 auto 8px;
+            border: 4px solid #ffafd1;
+            box-shadow: 4px 4px #c90060;
+            background: #ffe6f1
+        }
+        .cancion-actual {
+            text-align: center;
+            color: white;
+            margin-bottom: 10px
+        }
+        .cancion-actual h4 {
+            font-size: 19px;
+            line-height: 1.25;
+            margin: 5px 0
+        }
+        .cancion-actual p {
+            margin: 0;
+            font-size: 12px;
+            line-height: 1.4
+        }
+        .letra-texto,
+        .caja-traduccion {
+            position: relative;
+            background: #fff0f7;
+            color: #78204c;
+            border: 2px solid #ffafd1;
+            padding: 1px 1px 1px;
+            min-height: 0;
+            height: auto;
+            font-size: 13px;
+            line-height: 1.5;
+            white-space: pre-line;
+            overflow-wrap: break-word
+        }
+        #letraTexto,
+        #traduccionTexto {
+            margin: 0;
+            line-height: 1.5
+        }
+        .boton-spotify {
+            position: absolute;
+            right: 5px;
+            bottom: 5px;
+            display: inline-block;
+            padding: 7px 10px;
+            background: #e90065;
+            color: white;
+            text-decoration: none;
+            font-size: 10px;
+            font-weight: bold;
+            border: 2px solid #ffafd1;
+            border-radius: 5px;
+            text-align: center;
+            white-space: nowrap
+        }
+        .boton-spotify:hover {
+            background: #ff4a98
+        }
+        .significado {
+            margin-top: 2px;
+            background: #ffc6df;
+            border-left: 5px solid #e90065;
+            padding: 10px
+        }
+        .significado strong {
+            color: #e90065;
+            font-size: 12px
+        }
+        .significado p {
+            font-size: 12px;
+            line-height: 1.5;
+            margin: 6px 0 0;
+            overflow-wrap: anywhere
+        }
+        .imagen-esquina {
+            display: block;
+            width: 100%;
+            height: 150px;
+            object-fit: cover;
+            background: #e90065;
+            margin-top: 20px;
+            border: 2px solid #e90065
+        }
+        .dos-columnas {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 10px;
+            margin-top: 10px;
+        }
+        .columna-extra {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+            min-width: 0;
+            padding: 5px;
+            border: 2px solid #ffafd1;
+            background: #ffc6df;
+        }
+        .imagen-extra {
+            display: block;
+            width: 100%;
+            height: 105px;
+            object-fit: cover;
+            border: 3px solid #e90065;
+            border-radius: 8px;
+            background: #ffe6f1;
+        }
+        .texto-extra {
+            color: #962161;
+            font-size: 12px;
+            line-height: 1.4;
+            margin: 0 3px 8px;
+            font-weight: solid;
+            overflow-wrap: anywhere;
+        }
+        @media (max-width: 650px) {
+            .dos-columnas {
+                gap: 6px;
+            }
+            .imagen-extra {
+                height: 85px;
+            }
+            .texto-extra {
+                font-size: 11px;
+            }
+        }
+        footer {
+            text-align: center;
+            background: #e90065;
+            color: white;
+            padding: 10px;
+            margin-top: 3px;
+            border-top: 5px solid #ff74b1
+        }
+        footer p {
+            margin: 4px;
+            font-size: 12px
+        }
+        footer a {
+            color: white;
+            text-decoration: none
+        }
+        .encabezado-cancion {
+            display: flex;
+            align-items: center;
+            justify-content: flex-start;
+            gap: 16px;
+            margin-bottom: 14px;
+        }
+        .portada-grande {
+            width: 180px;
+            height: 180px;
+            object-fit: cover;
+            display: block;
+            margin: 0;
+            flex-shrink: 0;
+            border: 4px solid #ffafd1;
+            box-shadow: 4px 4px #c90060;
+            background-color: #ffe6f1;
+        }
+        .datos-reproductor {
+            flex: 1;
+            min-width: 0;
+            color: white;
+        }
+        .cancion-actual {
+            text-align: left;
+            color: white;
+            margin-bottom: 12px;
+        }
+        .cancion-actual h4 {
+            font-size: 19px;
+            line-height: 1.25;
+            margin: 0 0 5px;
+            overflow-wrap: anywhere;
+        }
+        .cancion-actual p {
+            margin: 0;
+            font-size: 12px;
+            line-height: 1.4;
+            overflow-wrap: anywhere;
+        }
+        .audio-reproductor {
+            display: block;
+            width: 100%;
+            max-width: 100%;
+        }
+        @media(max-width:650px) {
+            .encabezado-cancion {
+                gap: 10px;
+            }
+            .portada-grande {
+                width: 120px;
+                height: 120px;
+            }
+            .cancion-actual h4 {
+                font-size: 15px;
+            }
+            .audio-reproductor {
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+    <div>
+        <div class="titulo">
+            <h1>ﾒ૦ﾒ૦ 💋.ᐟ</h1>
+            <img src="image/2000.png" alt="Logo de XOXO" class="logo-cabecera">
+        </div>
+        <nav class="barra-navegacion">
+            <a href="index.html" class="boton-nav">HOME!!</a>
+            <a href="pagina1.html" class="boton-nav activo">LETRAS</a>
+            <a href="pagina2.html" class="boton-nav">PARA TI.ᐟ</a>
+            <a href="pagina3.html" class="boton-nav">CANCIONES ♫</a>
+            <a href="pagina4.html" class="boton-nav">ARTISTAS 📽</a>
+            <a href="pagina5.html" class="boton-nav">PLAYLIST</a>
+        </nav>
+    </div>
+</header>
+    <div class="presentacion">
+    <div>
+        <h2>LETRAS EN LOOP ♫</h2>
+        <p>Lee, traduce y descubre lo que hay detrás de cada canción.</p>
+    </div>
+</div>
+<main>
+    <section class="columna">
+        <h3>╰┈➤ ELIGE LA CANCIÓN DE TU AGRADO</h3>
+        <div class="opcion-cancion">
+            <img src="image/tbe.png" alt="Portada de Meet Me Halfway" class="mini-portada">
+            <div class="datos-cancion"><strong>Meet Me Halfway</strong><span>The Black Eyed Peas</span></div>
+            <button class="boton-ver" onclick="mostrarCancion(0)">VER ↗</button>
+        </div>
+        <div class="opcion-cancion">
+            <img src="image/katy.png" alt="Portada de Teenage Dream" class="mini-portada">
+            <div class="datos-cancion"><strong>Teenage Dream</strong><span>Katy Perry</span></div>
+            <button class="boton-ver" onclick="mostrarCancion(1)">VER ↗</button>
+        </div>
+        <div class="opcion-cancion">
+            <img src="image/sk" alt="Portada de Escape" class="mini-portada">
+            <div class="datos-cancion"><strong>Escape</strong><span>Stray Kids</span></div>
+            <button class="boton-ver" onclick="mostrarCancion(2)">VER ↗</button>
+        </div>
+        <div class="opcion-cancion">
+            <img src="image/chk.jpg" alt="Portada de Mmchk" class="mini-portada">
+            <div class="datos-cancion"><strong>Mmchk</strong><span>NEXZ</span></div>
+            <button class="boton-ver" onclick="mostrarCancion(3)">VER ↗</button>
+        </div>
+        <div class="opcion-cancion">
+            <img src="image/enjambre.jpg" alt="Portada de Manía Cardíaca" class="mini-portada">
+            <div class="datos-cancion"><strong>Manía Cardíaca</strong><span>Enjambre</span></div>
+            <button class="boton-ver" onclick="mostrarCancion(4)">VER ↗</button>
+        </div>
+        <div class="opcion-cancion">
+            <img src="image/Nelly Furtado.jpg" alt="Portada de Promiscuous" class="mini-portada">
+            <div class="datos-cancion"><strong>Promiscuous</strong><span>Nelly Furtado</span></div>
+            <button class="boton-ver" onclick="mostrarCancion(5)">VER ↗</button>
+        </div>
+        <div class="opcion-cancion">
+            <img src="image/Chicago.jpg" alt="Portada de Chicago" class="mini-portada">
+            <div class="datos-cancion"><strong>Chicago</strong><span>Michael Jackson</span></div>
+            <button class="boton-ver" onclick="mostrarCancion(6)">VER ↗</button>
+        </div>
+        <div class="opcion-cancion">
+            <img src="image/sean.png" alt="Portada de She Doesn't Mind" class="mini-portada">
+            <div class="datos-cancion"><strong>She Doesn't Mind</strong><span>Sean Paul</span></div>
+            <button class="boton-ver" onclick="mostrarCancion(7)">VER ↗</button>
+        </div>
+        <div class="opcion-cancion">
+            <img src="image/My First Flip.jpg" alt="Portada de She Doesn't Mind" class="mini-portada">
+            <div class="datos-cancion"><strong>My first love song</strong><span>Kickflip</span></div>
+            <button class="boton-ver" onclick="mostrarCancion(8)">VER ↗</button>
+        </div>
+        <div class="opcion-cancion">
+            <img src="image/olivio.png" alt="Portada de She Doesn't Mind" class="mini-portada">
+            <div class="datos-cancion"><strong>All-American Bitch</strong><span>Olivia Rodrigo</span></div>
+            <button class="boton-ver" onclick="mostrarCancion(9)">VER ↗</button>
+        </div>
+        </section>
+        <section class="columna">
+            <div class="encabezado-cancion">
+                <img alt="Portada de la canci&oacute;n seleccionada" class="portada-grande" id="portadaActual"
+                    src="image/LMFAO.jpeg" />
+                <div class="datos-reproductor">
+                    <div class="cancion-actual">
+                        <h4 id="tituloActual">
+                            Party Rock Anthem
+                        </h4>
+                        <p id="artistaActual">
+                            LMFAO (feat. Lauren Bennett &amp; GoonRock)
+                        </p>
+                    </div>
+                    <audio class="audio-reproductor" controls="" id="audioReproductor" preload="none"
+                        src="music/LMFAO - Party Rock Anthem (Lyrics) ft. Lauren Bennett, GoonRock.mp3">
+                        Tu navegador no puede reproducir audio.
+                    </audio>
+                </div>
+            </div>
+            <h3>
+                Letra ♫
+            </h3>
+            <div class="letra-texto">
+                <div id="letraTexto">
+                    Party rock
+                    Yeah
+                    Woo!
+                    Let's go!
+                    Party rockers in the house tonight
+                    Everybody just have a good time (yeah)
+                    And we gon' make you lose your mind (woo!)
+                    Everybody just have a good time (clap!)
+                </div>
+                <a class="boton-spotify" href="https://open.spotify.com/search/Party%20Rock%20Anthem%20LMFAO"
+                    id="botonLetra" rel="noopener noreferrer" target="_blank">
+                    VER LETRA COMPLETA &nearrow;
+                </a>
+            </div>
+            <h3 style="margin-top:8px;">
+                Traducci&oacute;n &darr;
+            </h3>
+            <div class="caja-traduccion">
+                <div id="traduccionTexto">
+                    &iexcl;La fiesta es la que lo hace!
+                    S&iacute;
+                    &iexcl;Woo!
+                    Vamos
+                    Los fiesteros est&aacute;n en la casa esta noche
+                    Todos simplemente p&aacute;senla bien
+                    Y vamos a hacer que pierdas la cabeza
+                    Todos simplemente p&aacute;senla bien
+                </div>
+                <a class="boton-spotify" href="https://open.spotify.com/search/Party%20Rock%20Anthem%20LMFAO"
+                    id="botonTraduccion" rel="noopener noreferrer" target="_blank">
+                    VER EN SPOTIFY &nearrow;
+                </a>
+            </div>
+        </section>
+        <section class="columna">
+        <div class="significado">
+            <strong>¿Y QUÉ SIGNIFICA? ˚.ᵎᵎ</strong>
+            <p id="significadoTexto">La canción “Party Rock Anthem” de LMFAO, junto a GoonRock y Lauren Bennett, celebra la diversión, las fiestas y la libertad de disfrutar el momento. Su estilo electro-pop, su ritmo pegajoso y el famoso baile shuffle la convirtieron en un éxito mundial. La canción invita a dejar atrás las preocupaciones, bailar y disfrutar con los demás, utilizando la música como una forma de escapar de la rutina y vivir el presente.</p>
+        </div>
+        <img src="image/gif5.gif" alt="Imagen musical decorativa" class="imagen-esquina">
+        <div class="dos-columnas">
+            <div class="columna-extra">
+                <img src="image/docu1.jpg" alt="Imagen musical 1" class="imagen-extra">
+                <p class="texto-extra">Redfoo y SkyBlu no son hermanos, son tío y sobrino. Además, son familia de Berry Gordy, fundador de Motown.</p>
+                <img src="image/docu2.jpg" alt="Imagen musical 2" class="imagen-extra">
+                <p class="texto-extra">Antes de llenar estadios, subía videos cantando a YouTube. Nunca habrá otro popstar masculino como él</p>
+            </div>
+            <div class="columna-extra">
+                <p class="texto-extra">Antes de ser una estrella global, tocaba en clubes de París y fue construyendo su carrera desde ahí.</p>
+                <img src="image/docu3.jpg" alt="Imagen musical 4" class="imagen-extra">
+                <p class="texto-extra">Antes de ser famosa, también fue recepcionista, teleoperadora y vendedora de extintores. Plot twist laboral</p>
+                <img src="image/docu4.jpg" alt="Imagen musical 5" class="imagen-extra">
+            </div>
+        </div>
+    </section>
+    </main>
+    <footer>
+    <p>QUIEN TIENE MUSICA EN LA MENTE, VIVE DIFERENTE.</p>
+    <p><a href="index.html">Volver al inicio</a></p>
+</footer>
+    <script>
+const canciones = [
+    {
+        titulo: "Meet Me Halfway",
+        artista: "The Black Eyed Peas",
+        portada: "image/tbe.png",
+        audio: "music/2.mp3",
+        letra: `Ooh
+I can't go any further than this
+Ooh
+I want you so badly
+It's my biggest wish
+
+Cool
+I spend my time just thinking, thinking, thinking bout you
+Every single day, yes, I'm really missing, missing you
+And all those things we used to, used to, used to, used to do
+Hey, girl, what's up? It used to, used to be just me and you`,
+        traduccion: `Uy, no puedo ir más allá de esto
+Uy, te deseo tanto, es mi mayor deseo
+
+Paso el tiempo pensando en ti
+Cada día realmente te echo de menos
+Y todas esas cosas que solíamos hacer
+Hola, chica, ¿qué pasa? Antes solo éramos tú y yo`,
+        significado: `La canción “Meet Me Halfway” de Black Eyed Peas habla del amor, la distancia y la importancia del esfuerzo mutuo en una relación. Expresa el deseo de reencontrarse con alguien especial y destaca que ambas personas deben poner de su parte. Su mensaje principal es que el amor necesita reciprocidad, comprensión y compromiso.`
+    },
+    {
+        titulo: "Teenage Dream",
+        artista: "Katy Perry",
+        portada: "image/katy.png",
+        audio: "music/3.mp3",
+        letra: `You think I'm pretty without any makeup on
+You think I'm funny when I tell the punch line wrong
+I know you get me, so I let my walls come down, down
+Before you met me
+I was alright, but things were kinda heavy
+You brought me to life, now every February
+You'll be my Valentine, Valentine`,
+        traduccion: `Crees que soy guapa sin maquillaje
+Crees que soy graciosa cuando cuento mal el chiste
+Sé que me entiendes, así que dejo caer mis barreras
+Antes de conocerte
+Estaba bien, pero las cosas eran algo difíciles
+Me diste vida y ahora cada febrero
+Serás mi San Valentín`,
+        significado: `“Teenage Dream” de Katy Perry habla del primer amor, la juventud y la emoción de encontrar a alguien que te acepta tal como eres. La canción transmite pasión, libertad y felicidad, mostrando cómo una relación especial puede hacerte sentir como si estuvieras viviendo un sueño.`
+    },
+    {
+        titulo: "Escape",
+        artista: "Stray Kids",
+        portada: "image/sk",
+        audio: "music/4.mp3",
+        letra: `The sky is burning
+타들어 가는 회색 잿빛 세상, there's no way
+차가운 눈빛
+악마의 손짓, huh, 망가져 갈 이유가 많네
+Like magic, 이 시간을 멈춘다면
+네 앞에 설게 도망가자, hold my hand
+뜨겁게 날 태우며
+차가워진 널 녹여`,
+        traduccion: `El cielo arde
+Este mundo gris se vuelve cenizas, no hay salida
+Miradas frías
+Sobran razones para romperse
+Si pudiera parar el tiempo como por arte de magia
+Me pararía frente a ti, vámonos, toma mi mano
+Ardo intensamente
+Y tu frialdad se derrite`,
+        significado: `“ESCAPE” de Bang Chan y Hyunjin de Stray Kids habla del deseo de escapar de una realidad difícil y encontrar libertad junto a alguien especial. La canción transmite esperanza, amor y la búsqueda de un refugio donde ambos puedan sentirse seguros y superar las adversidades juntos.`
+    },
+    {
+        titulo: "Mmchk",
+        artista: "NEXZ",
+        portada: "image/chk.jpg",
+        audio: "music/5.mp3",
+        letra: `Bring that beat back
+Chopstick으로 집어먹는 crackers
+Mega crew 속 혼자서 freestyle
+과감히 드러내 I don't act right
+뇌리에 한방 날려 punchline
+Don't need a frame 내가 나를 branding
+정해진 answer 앞에 난 say less
+Tick-i-tick-tock, just focus and I
+내 맘을 따라 now go, go`,
+        traduccion: `Trae ese ritmo otra vez
+Tomo galletitas, como lo que quiero
+Aunque estoy con los chicos, voy a mi ritmo
+Me muestro sin filtro, no actúo para encajar
+Tiro líneas que se te pegan a la cabeza
+Yo mismo creo mi marca
+Frente a las respuestas definidas, digo menos
+Tic-tic-tac, solo me concentro
+Sigo a mi corazón, vamos, vamos`,
+        significado: `La canción “Mmchk” de NEXZ celebra la autenticidad y la libertad de expresión, rechazando las normas sociales y lo convencional. El grupo destaca la importancia de ser diferente y seguir el propio camino. Su combinación de hip-hop y música electrónica crea un ritmo enérgico que invita a ser uno mismo.`
+    },
+    {
+        titulo: "Manía Cardíaca",
+        artista: "Enjambre",
+        portada: "image/enjambre.jpg",
+        audio: "music/6.mp3",
+        letra: `Tú, quien en el umbral de años
+El corazón, perdiste entre extraños
+Tú, quien en el festejo transitas
+Y excitas a tus visitas
+
+Tú, quien no llora lágrimas
+Sino inocentes ánimas
+Que lloran por cortejo
+Hay sangre derramada en azulejo`,
+        traduccion: `You, who at the threshold of years
+Lost your heart among strangers
+You, who move through the celebration
+And excite your visitors
+
+You, who do not cry tears
+But innocent souls
+Who weep for the procession
+There is blood spilled on the tiles`,
+        significado: `La canción “Manía Cardíaca” de Enjambre explora el engaño, la traición y la desilusión amorosa. Utiliza metáforas del corazón y heridas físicas para representar el dolor causado por una persona falsa y manipuladora. También refleja la dificultad de sanar y la decisión de alejarse para evitar más sufrimiento.`
+    },
+    {
+        titulo: "Promiscuous",
+        artista: "Nelly Furtado ft. Timbaland",
+        portada: "image/Nelly Furtado.jpg",
+        audio: "music/7.mp3",
+        letra: `Am I throwin' you off?
+Nope
+Didn't think so
+
+How you doin', young lady?
+That feeling that you giving really drives me crazy
+You dope, have a player 'bout to choke
+I was at a loss for words first time that we spoke`,
+        traduccion: `¿Te estoy confundiendo?
+No
+No lo creo
+
+¿Cómo estás, jovencita?
+Esa sensación que me das realmente me vuelve loco
+Eres genial, tienes a un jugador a punto de atragantarse
+Me quedé sin palabras la primera vez que hablamos`,
+        significado: `La canción “Promiscuous” de Nelly Furtado y Timbaland presenta un juego de coqueteo y seducción entre dos personas que sienten atracción mutua. La letra destaca la confianza, la provocación y la libertad de expresar el deseo sin compromisos. Musicalmente, combina pop, R&B y hip-hop en un ritmo pegajoso.`
+    },
+    {
+        titulo: "Chicago",
+        artista: "Michael Jackson",
+        portada: "image/Chicago.jpg",
+        audio: "music/8.mp3",
+        letra: `I met her on my way to Chicago
+Where she was all alone
+And so was I, so I asked her for her name
+She smiled and looked at me
+I was surprised to see
+That a woman like that was really into me`,
+        traduccion: `La conocí camino a Chicago
+Donde ella estaba completamente sola
+Y yo también, así que le pregunté su nombre
+Ella sonrió y me miró
+Me sorprendió ver
+Que una mujer así estuviera interesada en mí`,
+        significado: `La canción “Chicago” de Michael Jackson trata sobre el engaño y la traición en una relación amorosa. El protagonista descubre que una mujer le ha ocultado información sobre su vida familiar. La canción expresa sorpresa y decepción, combinando elementos de pop y R&B.`
+    },
+    {
+        titulo: "She Doesn't Mind",
+        artista: "Sean Paul",
+        portada: "image/sean.png",
+        audio: "music/9.mp3",
+        letra: `Ouh
+
+Girl I got you so high, and I know you like
+So come on push it on me, if it feels alright
+When you drop it low, and break me off
+No, she doesn't mind, –ind
+She doesn't mind, –ind
+She doesn't mind
+Girl I got you so!`,
+        traduccion: `Ouh
+
+Chica, te tengo tan arriba, y sé que te gusta
+Así que ven, si se siente bien
+Cuando bajas y te mueves
+No le importa
+No le importa
+No le importa
+¡Chica, te tengo tan!`,
+        significado: `La canción “She Doesn't Mind” de Sean Paul trata sobre la diversión, la libertad y la seducción en la vida nocturna. Describe a una mujer que disfruta bailar sin preocuparse por las opiniones de los demás. Su ritmo combina dancehall, reggae y hip-hop, creando un ambiente festivo y enérgico.`
+    },
+    {
+        titulo: "My first love song",
+        artista: "Kickflip",
+        portada: "image/My First Flip.jpg",
+        audio: "music/10.mp3",
+        letra: `Mm, 아 그니까
+절대 절대 이런 거 못하는데
+고백할게 답은 간단하게
+No thanks? No thanks, 잠깐만 들어볼래
+노래 노래 노래 (mm)
+All day, all night, 이만 이천 번째
+밤새, write rhymes, 아직 좀 별론데
+단어 몇 개론 표현이 안돼
+라임이 붙는 게 없어 네 이름에
+까마득해`,
+        traduccion: `Mm, ah, sí
+Me resulta absolutamente imposible hacerlo
+Confieso que la respuesta es sencilla
+¿No, gracias? No, gracias, escuche un segundo
+Canción canción canción (mm)
+Todo el día, toda la noche, veintidós milésima
+Toda la noche escribiendo rimas, y aún así no es gran cosa
+No puedo expresarlo en pocas palabras
+No hay nada con lima asociado a tu nombre
+Está muy lejos`,
+        significado: `La canción “My First Love Song” de KickFlip habla sobre la emoción y los nervios de enamorarse por primera vez. El protagonista, aunque se siente inseguro al expresar sus sentimientos mediante una canción, se atreve a intentarlo porque su amor es más fuerte que sus miedos. La mezcla de rap y canto refleja su vulnerabilidad y confianza, mostrando que lo importante no es cantar perfectamente, sino tener el valor de confesar lo que siente.`
+    },
+    {
+    titulo: "All-American Bitch",
+        artista: "Olivia Rodrigo",
+        portada: "image/olivio.png",
+        audio: "music/11.mp3",
+        letra: `I am light as a feather, I'm as stiff as a board
+I pay attention to things that most people ignore
+And I'm alright with the movies
+That make jokes 'bout senseless cruelty, that's for sure
+And I am built like a mother and a total machine
+I feel for your every little issue, I know just what you mean
+And I make light of the darkness
+I've got Sun in my motherfuckin' pocket, best believe
+Yeah, you know me, I-I-I`,
+        traduccion: `Soy ligero como una pluma, soy rígido como una tabla  
+Presto atención a cosas que la mayoría de la gente ignora  
+Y estoy bien con las películas  
+Que hacen bromas sobre la crueldad sin sentido, eso seguro  
+Y estoy construido como una madre y una máquina total  
+Siento cada uno de tus pequeños problemas, sé exactamente lo que quieres decir  
+Y tomo a la ligera la oscuridad  
+Tengo el Sol en mi maldita bolsa, créelo  
+Sí, me conoces, yo-yo-yo`,
+        significado: `La canción “all-american bitch” de Olivia Rodrigo critica irónicamente los estereotipos y las expectativas que la sociedad impone a las mujeres jóvenes. A través de frases contradictorias y referencias culturales, muestra la presión por ser perfecta, atractiva, amable y sumisa. Con su estilo pop rock y punk, Rodrigo expresa rebeldía y frustración, cuestionando los ideales de belleza y comportamiento femenino y defendiendo una identidad auténtica.`
+    }
+];
+        function mostrarCancion(numero) {
+            const cancion = canciones[numero];
+            if (!cancion) return;
+            const enlaceSpotify = "https://open.spotify.com/search/" + encodeURIComponent(cancion.titulo + " " + cancion.artista);
+            document.getElementById("botonLetra").href = enlaceSpotify;
+            document.getElementById("botonTraduccion").href = enlaceSpotify;
+            document.getElementById("tituloActual").textContent = cancion.titulo;
+            document.getElementById("artistaActual").textContent = cancion.artista;
+            document.getElementById("portadaActual").src = cancion.portada;
+            document.getElementById("portadaActual").alt = "Portada de " + cancion.titulo;
+            const audio = document.getElementById("audioReproductor");
+            audio.pause();
+            audio.currentTime = 0;
+            audio.src = cancion.audio;
+            audio.load();
+            document.getElementById("letraTexto").textContent = cancion.letra;
+            document.getElementById("traduccionTexto").textContent = cancion.traduccion;
+            document.getElementById("significadoTexto").textContent = cancion.significado;
+        }
+    </script>
+</body>
+</html>
